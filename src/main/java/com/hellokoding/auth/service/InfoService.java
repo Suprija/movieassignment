@@ -10,7 +10,7 @@ public interface InfoService
 	List<Info> getAllMoviesByLocAndLang(String loc,String lang);
 	List<Object> getLoc();
 	List<Object> getLang();
-	Integer getTickets(String movie);
+	Integer getTickets(String movie, String loc);
 	Integer updateTickets(String movie,Integer newtick);
 
 	//List<Mail> getAllMailsByFromaddAndType(String from, String type);

@@ -186,7 +186,8 @@ public class UserController {
     public String redirect(Model model,@RequestParam(name="movie") String movie,@RequestParam("tickets") Integer tickets,Principal p) {
        String uname=p.getName();
        //System.out.println("****************************************************"+uname);
-    	int tick=infoService.getTickets(movie);
+       System.out.println("****************************************************"+loc);
+       int tick=infoService.getTickets(movie,loc);
        int newtick=tick-(tickets);
        //model.addAttribute("tick",tick);
       // model.addAttribute("newtick",newtick);

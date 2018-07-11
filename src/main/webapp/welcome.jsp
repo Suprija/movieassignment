@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +28,7 @@
     <![endif]-->
 </head>
 <body>
-
+<%-- <h1> ${contextPath}</h1> --%>
 <div class="container">
 
     <c:if test="${pageContext.request.userPrincipal.name != null}">
@@ -36,10 +36,10 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
-        <h2><i>Welcome ${pageContext.request.userPrincipal.name}</i> | <a onclick="document.forms['logoutForm'].submit()">Logout</a> | <a href="/profile">Profile</a></h2>
+        <h2><i>Welcome ${pageContext.request.userPrincipal.name}</i> | <a onclick="document.forms['logoutForm'].submit()">Logout</a> | <a href="${contextPath}/profile">Profile</a></h2>
          
 
-  <form action="/choices" />
+  <form action=" ${contextPath}/choices" />
   <table align="center"><tr>
  <td>Location :</td>
  <td><form:select path="locations" name="locations" >
@@ -48,7 +48,7 @@
         </form:select></td>
  </tr>
  
- <tr>
+ <tr> 
  <td>Language :</td>
  <td>
  <form:radiobuttons path="languages" name="languages" items="${languages}" />

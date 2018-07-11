@@ -44,10 +44,10 @@ public class InfoServiceImpl implements InfoService
 	}
 	
 	@Override
-	public Integer getTickets(String movie) 
+	public Integer getTickets(String movie,String loc) 
 	{
 		
-		Integer tickets = infoRepository.getTickets(movie); 
+		Integer tickets = infoRepository.getTickets(movie,loc); 
 		return tickets;
 	}
 	

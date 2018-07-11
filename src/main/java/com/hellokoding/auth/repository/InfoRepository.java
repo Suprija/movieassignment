@@ -24,8 +24,8 @@ public interface InfoRepository extends JpaRepository<Info,Long>
 	@Query("select distinct s.lang from Info s")
     List<Object> getLang();
 	
-	@Query("select s.tickets from Info s where s.movie=?1")
-	Integer getTickets(String movie);
+	@Query("select s.tickets from Info s where s.movie=?1 and s.loc=?2")
+	Integer getTickets(String movie, String loc);
 	
 	  @Transactional
 	  @Modifying(clearAutomatically=true)

@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +17,7 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form><h2>Welcome ${pageContext.request.userPrincipal.name}</h2>
 <a onclick="document.forms['logoutForm'].submit()"><p style="color:blue;"><label style="font-size: 20px;">Logout</label></p></a>
-<form action="/redirect" />
+<form action=" ${contextPath}/redirect" />
 
 <table align="center">
 <tr>
