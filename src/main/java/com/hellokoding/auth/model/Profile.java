@@ -1,7 +1,6 @@
 package com.hellokoding.auth.model;
 
 import java.util.Date;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,7 +26,6 @@ public class Profile {
 	
 	public Profile() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Column(name="movie")
@@ -108,7 +106,6 @@ public void setLang(String lang) {
 
 	public Profile(String uname, String movie, String loc, String lang, Integer tickets, Date dates) {
 		super();
-		this.id=id;
 		this.uname = uname;
 		this.movie = movie;
 		this.loc = loc;
@@ -117,21 +114,6 @@ public void setLang(String lang) {
 		this.dates = dates;
 	}
 
-	/*public Profile(String uname, String movie, Integer tickets, Date dates) {
-		super();
-		this.uname = uname;
-		this.movie = movie;
-		this.tickets = tickets;
-		this.dates = dates;
-	}
-*/
-	/*public Profile(String uname, String movie, Integer tickets) {
-		super();
-		this.uname = uname;
-		this.movie = movie;
-		this.tickets = tickets;
-	}*/
-	
 	
 	
 }

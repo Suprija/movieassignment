@@ -84,25 +84,7 @@ public class Info
 		{
 			
 		}
-		/*public Mail(Long id, String frma, String toa, String sbjt, String body, String mt) {
-			super();
-			this.id = id;
-			this.frma = frma;
-			this.toa = toa;
-			this.sbjt = sbjt;
-			this.body = body;
-			this.mt = mt;
-		}
-
-/*
-		public Mail(Long id, String loc, String lang, String theatre, String movie) {
-			super();
-			this.id = id;
-			this.loc = loc;
-			this.lang = lang;
-			this.theatre = theatre;
-			this.movie = movie;
-		}*/
+		
 
 		public Info(Long id, String loc, String lang, String theatre, String movie, Integer tickets) {
 			super();
