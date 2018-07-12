@@ -1,7 +1,6 @@
-# Registration and Login Example with Spring Security, Spring Boot, Spring Data JPA, HSQL, JSP
+# MOVIE TICKET BOOKING 
 
-## Guide
-https://hellokoding.com/registration-and-login-example-with-spring-security-spring-boot-spring-data-jpa-hsql-jsp/
+
 
 ## Prerequisites
 - JDK 1.7 or later
@@ -17,3 +16,6 @@ https://hellokoding.com/registration-and-login-example-with-spring-security-spri
 
 ## Run
 ```mvn clean spring-boot:run```
+
+Starting url:
+	localhost:8083/registration
