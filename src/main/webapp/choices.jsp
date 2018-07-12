@@ -16,20 +16,22 @@
 <form id="logoutForm" method="POST" action="${contextPath}/logout">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form><h2>Welcome ${pageContext.request.userPrincipal.name}</h2>
-<a onclick="document.forms['logoutForm'].submit()"><p style="color:blue;"><label style="font-size: 20px;">Logout</label></p></a>
+<a onclick="document.forms['logoutForm'].submit()" ><p style="color:blue;"><label style="font-size: 20px;">Logout</label></p></a>
 <form action=" ${contextPath}/redirect" />
 
 <table align="center">
 <tr>
 <td>Location :</td><td name="location">${location}</td></tr>
+<td>Location :</td><td name=languages>${languages}</td></tr>
+<td>Location :</td><td name="dateb">${dateb}</td></tr>
 
 <tr><td>Movie--Theatre--Available Tickets : </td>
 <c:forEach var="list" items="${list}">
 		
 			<td>
-			<input type="radio" name="movie" value=${list.movie} data=${list.tickets} onchange="checktickets()" id="movie" required><label style="font-size: 20px;">${list.movie} -- ${list.theatre}</label>
-			</td><td id="availabletickets"><label style="font-size: 20px;"> --${list.tickets}</label>
-			</td></c:forEach></tr>
+			<input type="radio" name="movie" value=${list.movie} data=${list.tickets} onchange="checktickets()" id="movie" required><label style="font-size: 20px;">${list.movie} -- ${list.theatre} -- --${list.tickets}</label>
+			</td><%-- <td id="availabletickets"><label style="font-size: 20px;"> --${list.tickets}</label>
+			</td> --%></c:forEach></tr>
 			<tr><td></td><td id="housefull"></td></tr>
 			
 		<tr>

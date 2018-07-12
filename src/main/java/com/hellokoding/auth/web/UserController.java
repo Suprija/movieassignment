@@ -35,6 +35,9 @@ public class UserController {
 	
 	public String loc;
 	public String lang;
+	public String dateb;
+
+	
     @Autowired
     private UserService userService;
 
@@ -130,8 +133,8 @@ public class UserController {
     }
     
     
-    @RequestMapping(value = {"/choices"}, method = RequestMethod.GET)
-    public String options(Model model,@RequestParam(name="locations") String locations,@RequestParam(name="languages") String languages) {
+    @RequestMapping(value = {"/choices"}, method = RequestMethod.POST)
+    public String options(Model model,@RequestParam(name="locations") String locations,@RequestParam(name="languages") String languages,@RequestParam(name="date") String date) {
     	
     	
     	
@@ -139,9 +142,12 @@ public class UserController {
     	model.addAttribute("list", list);
     	model.addAttribute("location", locations);
     	model.addAttribute("languages", languages);
+    	model.addAttribute("dateb", date);
+
 
     	loc=locations;
     	lang=languages;
+    	dateb=date;
         //System.out.println("****************************************************"+loc);
 
     	
@@ -194,9 +200,9 @@ public class UserController {
        int updatetick=infoService.updateTickets(movie,newtick);
       // System.out.println("****************************************************"+loc);
 
-       String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+       //String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
 
-       profileService.insertData(uname,loc,lang,movie,tickets,timeStamp);
+       profileService.insertData(uname,loc,lang,movie,tickets,dateb);
        //System.out.println("****************************************************"+lang);
 
        //model.addAttribute("updatetick",updatetick);

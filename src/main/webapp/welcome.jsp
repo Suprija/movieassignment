@@ -39,11 +39,11 @@
         <h2><i>Welcome ${pageContext.request.userPrincipal.name}</i> | <a onclick="document.forms['logoutForm'].submit()">Logout</a> | <a href="${contextPath}/profile">Profile</a></h2>
          
 
-  <form action=" ${contextPath}/choices" />
+  <form action=" ${contextPath}/choices" method="post"/>
   <table align="center"><tr>
  <td>Location :</td>
- <td><form:select path="locations" name="locations" >
-            <form:option value="NONE" label="--- Select ---" />
+ <td><form:select path="locations" name="locations" required="required">
+            <form:option value="" label="--- Select ---" />
             <form:options  items="${locations}"  />
         </form:select></td>
  </tr>
@@ -51,7 +51,7 @@
  <tr> 
  <td>Language :</td>
  <td>
- <form:radiobuttons path="languages" name="languages" items="${languages}" />
+ <form:radiobuttons path="languages" name="languages" items="${languages}" required="required"/>
  </td>
  </tr>
  <tr>

@@ -17,18 +17,23 @@
         </form><h3><i>Welcome ${pageContext.request.userPrincipal.name}</i></h3>
 <a onclick="document.forms['logoutForm'].submit()"><p style="color:blue;"><label style="font-size: 25px;">Logout</label></p></a>
 <table class="w3-striped" align="center">
-<c:forEach var="profile" items="${profile}">
 <tr>
       <th>Movie</th>
       <th>Location</th>
       <th>Language</th>
 	  <th>Tickets</th>
+	  <th>Date</th>
+	  
     </tr>
+<c:forEach var="profile" items="${profile}">
+
 <tr>
       <td>${profile.movie}</td>
       <td>${profile.loc}</td>
       <td>${profile.lang}</td>
 	  <td>${profile.tickets}</td>
+	 <td>${profile.dates}</td>
+	 
     </tr>
 
 
