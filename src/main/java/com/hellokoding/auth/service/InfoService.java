@@ -3,7 +3,6 @@ package com.hellokoding.auth.service;
 import java.util.List;
 
 import com.hellokoding.auth.model.Info;
-//import com.hellokoding.auth.model.Mail;
 
 public interface InfoService 
 {
@@ -13,6 +12,5 @@ public interface InfoService
 	Integer getTickets(String movie, String loc);
 	Integer updateTickets(String movie,Integer newtick);
 
-	//List<Mail> getAllMailsByFromaddAndType(String from, String type);
 }
 
