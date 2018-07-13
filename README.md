@@ -7,7 +7,7 @@ Java JRE, Tomcat, MySQL database.
 
 INSTALLING :
 
-If there exist any tables by the name 'users','info','profile','role','user_role', please delete them using the command :
+If there exist any tables by the name 'user','info','profile','role','user_role', please delete them using the command :
 
 drop table < name of the table >;
 
