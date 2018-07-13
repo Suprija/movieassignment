@@ -1,21 +1,19 @@
-# MOVIE TICKET BOOKING 
+ MOVIE TICKET BOOKING 
 
 
+PREREQUISITES:
 
-## Prerequisites
-- JDK 1.7 or later
-- Maven 3 or later
+Java JRE, Tomcat, MySQL database.
 
-## Stack
-- Spring Security
-- Spring Boot
-- Spring Data JPA
-- Maven
-- JSP
-- HSQL
+INSTALLING :
 
-## Run
-```mvn clean spring-boot:run```
+If there exist any tables by the name 'users','info','profile','role','user_role', please delete them using the command :
+
+drop table < name of the table >;
+
+Deploy the war file to Tomcat.
+
+If your tomcat is configured to be on 8080, you can access the app using:
 
 Starting url:
-	localhost:8083/registration
+	localhost:8080/{name of war file}/registration
