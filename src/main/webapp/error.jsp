@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<font color='red'>${errorMsg}</font>
-
+<p>Something went wrong.Please go to previous page and try again.</p>
 </body>
 </html>

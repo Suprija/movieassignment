@@ -39,7 +39,7 @@
         <h2><i>Welcome ${pageContext.request.userPrincipal.name}</i> | <a onclick="document.forms['logoutForm'].submit()">Logout</a> | <a href="${contextPath}/profile">Profile</a></h2>
          
 
-  <form action=" ${contextPath}/choices" method="post"/>
+  <form action=" ${contextPath}/choices" />
   <table align="center"><tr>
  <td>Location :</td>
  <td><form:select path="locations" name="locations" required="required">

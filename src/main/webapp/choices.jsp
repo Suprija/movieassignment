@@ -23,7 +23,7 @@
 <tr>
 <td>Location :</td><td name="location">${location}</td></tr>
 <td>Location :</td><td name=languages>${languages}</td></tr>
-<td>Location :</td><td name="dateb">${dateb}</td></tr>
+<td>Date :</td><td name="dateb">${dateb}</td></tr>
 
 <tr><td>Movie--Theatre--Available Tickets : </td>
 <c:forEach var="list" items="${list}">

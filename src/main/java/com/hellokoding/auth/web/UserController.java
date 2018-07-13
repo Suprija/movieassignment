@@ -112,7 +112,7 @@ public class UserController {
     }
     
     
-    @RequestMapping(value = {"/choices"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/choices"})
     public String options(Model model,@RequestParam(name="locations") String locations,@RequestParam(name="languages") String languages,@RequestParam(name="date") String date) {
     	
     	
