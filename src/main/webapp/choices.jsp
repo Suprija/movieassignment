@@ -29,7 +29,7 @@
 <c:forEach var="list" items="${list}">
 		
 			<td>
-			<input type="radio" name="movie" value=${list.movie} data=${list.tickets} onchange="checktickets()" id="movie" required><label style="font-size: 20px;">${list.movie} -- ${list.theatre} -- --${list.tickets}</label>
+			<input type="radio" name="movie" value=${list.movie} data=${list.tickets} onchange="checktickets()" id="movie" required><label style="font-size: 20px;">${list.movie} -- ${list.theatre} -- ${list.tickets}</label>
 			</td><%-- <td id="availabletickets"><label style="font-size: 20px;"> --${list.tickets}</label>
 			</td> --%></c:forEach></tr>
 			<tr><td></td><td id="housefull"></td></tr>
@@ -55,7 +55,7 @@
   <td><input type="radio" name="ticketclass" value=150 data=150 id="platinum" onchange="checktickets()" required> Platinum-Rs.150</td>
 
 		</tr>
-<tr><td id="pricedesc">Price to be paid :</td><td id="price"></td></tr>
+<tr><td id="pricedesc">Price to be paid :</td><td id="price" name="price"></td></tr>
 			</table>
 			
 			<h3>Payment:</h3>

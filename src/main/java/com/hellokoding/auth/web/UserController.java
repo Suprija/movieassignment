@@ -140,7 +140,7 @@ public class UserController {
     	
     	
     	String uname=p.getName();
-    	logger.info("Entered profile page for user :!"+uname);
+    	logger.info("Entered profile page for user :"+uname);
 
     	List<Profile> profile=profileService.getData(uname);
     	
