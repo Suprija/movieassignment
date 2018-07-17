@@ -5,7 +5,9 @@ PREREQUISITES:
 
 Java JRE, Tomcat, MySQL database.
 
-INSTALLING :
+CONFIGURING mysql :
+
+mysql -u root -p
 
 Creating database:
 create database if not exists <database_name>;
@@ -14,6 +16,14 @@ create database if not exists <database_name>;
 Creating user in mysql :
 create user '<mysql_username>'@'localhost' identified by '<mysql_userpasword>';
 grant all on <database_name>.* to '<mysql_username>'@'localhost';
+
+exit and login as created mysql user :
+mysql -u <mysql_username> -p
+
+Now enter your mysql_userpassword
+
+Use your created database :
+use <database_name>;
 
 application.properties file:
 spring.datasource.url=jdbc:mysql://localhost:3306/<database_name>
