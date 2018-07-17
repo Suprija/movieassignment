@@ -48,5 +48,5 @@ Deploy the war file to Tomcat.
 
 If your tomcat is configured to be on 8080, you can access the app using:
 
-Starting url:
+Starting url:<br>
 	localhost:8080/{name of war file}/registration
