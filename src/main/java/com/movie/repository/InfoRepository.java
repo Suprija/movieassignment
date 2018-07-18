@@ -1,4 +1,4 @@
-package com.hellokoding.auth.repository;
+package com.movie.repository;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
-import com.hellokoding.auth.model.Info;
+import com.movie.model.Info;
 
 public interface InfoRepository extends JpaRepository<Info,Long>
 {

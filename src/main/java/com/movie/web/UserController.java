@@ -1,14 +1,14 @@
-package com.hellokoding.auth.web;
+package com.movie.web;
 
-import com.hellokoding.auth.model.User;
-import com.hellokoding.auth.model.Info;
-import com.hellokoding.auth.model.Profile;
-import com.hellokoding.auth.service.InfoService;
+import com.movie.model.Info;
+import com.movie.model.Profile;
+import com.movie.model.User;
+import com.movie.repository.InfoRepository;
+import com.movie.repository.ProfileRepository;
+import com.movie.service.SecurityService;
+import com.movie.service.UserService;
 
-import com.hellokoding.auth.service.ProfileService;
-import com.hellokoding.auth.service.SecurityService;
-import com.hellokoding.auth.service.UserService;
-import com.hellokoding.auth.validator.UserValidator;
+import com.movie.validator.UserValidator;
 
 import java.security.Principal;
 
@@ -36,10 +36,10 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private InfoService infoService;
+    private InfoRepository infoRepository;
 
     @Autowired
-    private ProfileService profileService;
+    private ProfileRepository profileRepository;
 
 
     
@@ -101,10 +101,10 @@ public class UserController {
     	
     	logger.info("Entered welcome page!");
     	
-   	List<Object> lo=infoService.getLoc();
+   	List<Object> lo=infoRepository.getLoc();
    	model.addAttribute("locations", lo);
    	
-   	List<Object> lan=infoService.getLang();
+   	List<Object> lan=infoRepository.getLang();
    	model.addAttribute("languages", lan);
     	
 	
@@ -117,7 +117,7 @@ public class UserController {
     	
     	
     	
-    	List<Info> list=infoService.getAllMoviesByLocAndLang(locations,languages);
+    	List<Info> list=infoRepository.findByLocAndLang(locations,languages);
     	model.addAttribute("list", list);
     	model.addAttribute("location", locations);
     	model.addAttribute("languages", languages);
@@ -142,7 +142,7 @@ public class UserController {
     	String uname=p.getName();
     	logger.info("Entered profile page for user :"+uname);
 
-    	List<Profile> profile=profileService.getData(uname);
+    	List<Profile> profile=profileRepository.getData(uname);
     	
     	model.addAttribute("profile", profile);
 
@@ -153,13 +153,13 @@ public class UserController {
     @RequestMapping(value = "/redirect", method = RequestMethod.GET)
     public String redirect(Model model,@RequestParam(name="movie") String movie,@RequestParam("tickets") Integer tickets,Principal p) {
        String uname=p.getName();
-       int tick=infoService.getTickets(movie,loc);
+       int tick=infoRepository.getTickets(movie,loc);
        int newtick=tick-(tickets);
        
-       int updatetick=infoService.updateTickets(movie,newtick);
+       int updatetick=infoRepository.updateTickets(movie,newtick);
 
 logger.info(""+updatetick);
-       profileService.insertData(uname,loc,lang,movie,tickets,dateb);
+       profileRepository.insertData(uname,loc,lang,movie,tickets,dateb);
        
     	return "redirect:/welcome";
     }

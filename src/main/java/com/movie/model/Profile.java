@@ -1,4 +1,4 @@
-package com.hellokoding.auth.model;
+package com.movie.model;
 
 import java.util.Date;
 

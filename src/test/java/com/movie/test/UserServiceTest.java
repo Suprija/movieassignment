@@ -1,27 +1,20 @@
-package com.hellokoding.auth.test;
-
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+package com.movie.test;
 
 import javax.transaction.Transactional;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.hellokoding.auth.model.User;
-import com.hellokoding.auth.repository.UserRepository;
-import com.hellokoding.auth.service.UserService;
-import com.hellokoding.auth.test.AbstractTest;
+import com.movie.model.User;
 
-import junit.framework.Assert;
+import com.movie.service.UserService;
+
 @Transactional
 public class UserServiceTest extends AbstractTest {
 	@Autowired
 	private UserService userService;
-	@Autowired
-	private UserRepository userRepo;
-	@SuppressWarnings("deprecation")
+	
 	@Test
     public void testGetByUsername() throws Exception {
 
@@ -35,7 +28,7 @@ Assert.assertEquals("expected attribute string doesnot match","suprijarao", enti
     public void saveUser() throws Exception {
 		User user=new User("testuser");
 		
-        userRepo.save(user);
+        userService.save(user);
 		
 Assert.assertNotNull("failure- expected entitiy", userService.findByUsername("testuser"));
 Assert.assertEquals("expected attribute string doesnot match","testuser", user.getUsername());
