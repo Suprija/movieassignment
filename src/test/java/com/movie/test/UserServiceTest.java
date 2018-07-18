@@ -20,13 +20,13 @@ public class UserServiceTest extends AbstractTest {
 	
 	@Test
 public void testGetByUsername() throws Exception {
-User user=new User("testuser");
+User user=new User("dummyuser");
 	
     userRepo.save(user);
-    String username="testuser";
+    String username="dummyuser";
     User entity = userService.findByUsername(username);
 Assert.assertNotNull("failure- expected entitiy", entity);
-Assert.assertEquals("expected attribute string doesnot match","testuser", entity.getUsername());
+Assert.assertEquals("expected attribute string doesnot match","dummyuser", entity.getUsername());
 
 }
 	
