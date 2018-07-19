@@ -1,6 +1,5 @@
 package com.movie.test;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.testSecurityContext;
@@ -62,23 +61,7 @@ public class UserControllerTest extends AbstractControllerTest {
               .defaultRequest(get("/").with(testSecurityContext()))
               .build();
         }
-
     @Test
-    public void testLogin() throws Exception {
-
-        String uri = "/login";
-     
-        
-        
-        mockMvc.perform(MockMvcRequestBuilders.get(uri))
-        		            .andExpect(status().isOk())
-        		            .andDo(print())
-        		            .andExpect(view().name("login"));
-        
-
-
-    }
-  @Test
 	public void testRegistrationPageLoading() throws Exception 
 	{
     	mockMvc.perform(MockMvcRequestBuilders.get("/registration"))
@@ -86,18 +69,25 @@ public class UserControllerTest extends AbstractControllerTest {
 		                 
 		                  .andExpect(view().name("registration"));
 	}
+    @Test
+    public void testLogin() throws Exception {
+
+        String uri = "/login";
+     mockMvc.perform(MockMvcRequestBuilders.get(uri))
+        		            .andExpect(status().isOk())
+        		            .andDo(print())
+        		            .andExpect(view().name("login"));
+        }
+  
    
- 
-      @Test
+@Test
       public void invalidLoginDenied() throws Exception {
         String loginErrorUrl = "/login?error";
         mockMvc
                 .perform(formLogin().password("invalid"))
                 .andExpect(redirectedUrl(loginErrorUrl))
                 .andExpect(unauthenticated());
-
-     
-    } 
+        } 
      
     
       @Test
@@ -116,6 +106,21 @@ public class UserControllerTest extends AbstractControllerTest {
       .andExpect(authenticated());
       
       }
+      
+      @Test
+  	public void testLoginFailure() throws Exception {
+  	  
+  	  User user=new User();
+  	  user.setUsername("suprija");
+  	  user.setPassword("suprija");
+  	  
+  	  userService.save(user);
+  	  
+  	  mockMvc
+    .perform(formLogin().user("suprija").password("suprijarao"))
+    .andExpect(unauthenticated());
+    
+    }
       
       @Test
       @WithMockUser
@@ -147,7 +152,6 @@ public class UserControllerTest extends AbstractControllerTest {
       @Test
      @WithMockUser
       public void testProfile() throws Exception {
-      	//List<Profile> profile=profileRepository.getData("suprijarao");
       	List<Profile> profile1=profileRepository.getData("nouser");
 		  
       	
@@ -156,13 +160,8 @@ public class UserControllerTest extends AbstractControllerTest {
          
           .andExpect(view().name("profile"));
     	  
-    	  //assertFalse(profile.isEmpty());
     	  assertTrue(profile1.isEmpty());
       }
       
-      
-     
-	   
-
 }
   

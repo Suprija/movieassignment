@@ -55,7 +55,7 @@
   <td><input type="radio" name="ticketclass" value=150 data=150 id="platinum" onchange="checktickets()" required> Platinum-Rs.150</td>
 
 		</tr>
-<tr><td id="pricedesc">Price to be paid :</td><td id="price" name="price"></td></tr>
+<tr><td id="pricedesc">Price to be paid :</td><td id="price"></td></tr>
 			</table>
 			
 			<h3>Payment:</h3>

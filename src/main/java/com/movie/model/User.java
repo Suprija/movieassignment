@@ -2,6 +2,11 @@ package com.movie.model;
 
 import javax.persistence.*;
 
+/**
+ * 
+ * @author suprija
+ * User entity class
+ */
 @Entity
 @Table(name = "user")
 public class User {

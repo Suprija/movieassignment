@@ -10,6 +10,11 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.movie.model.Info;
 
+/**
+ * This repository extends JpaRepository in which custom methods are declared depending upon our requirements
+ * @author suprija
+ *
+ */
 public interface InfoRepository extends JpaRepository<Info,Long>
 {
 	
@@ -28,6 +33,10 @@ public interface InfoRepository extends JpaRepository<Info,Long>
 	  @Modifying(clearAutomatically=true)
 	  @Query("update Info s set s.tickets=?2 where s.movie=?1")
 	Integer updateTickets(String movie,Integer newtick);
+
+	  
+	  @Query("select s.theatre from Info s where s.movie=?1 and s.loc=?2 and s.lang=?3")  
+	String getTheatre(String movie, String loc, String lang);
 	
 	
 	

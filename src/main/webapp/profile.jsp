@@ -20,8 +20,11 @@
 <tr>
       <th>Movie</th>
       <th>Location</th>
+      <th>Theatre</th>
       <th>Language</th>
 	  <th>Tickets</th>
+	  <th>Ticket Class</th>
+	  <th>Tickets Price</th>
 	  <th>Date</th>
 	  
     </tr>
@@ -30,8 +33,11 @@
 <tr>
       <td>${profile.movie}</td>
       <td>${profile.loc}</td>
+      <td>${profile.theatre}</td>
       <td>${profile.lang}</td>
 	  <td>${profile.tickets}</td>
+	  <td>${profile.ticketclass}</td>
+	  <td>${profile.ticketsprice}</td>
 	 <td>${profile.dates}</td>
 	 
     </tr>

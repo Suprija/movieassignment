@@ -10,17 +10,31 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+/**
+ * This class is to configure security for the Movie Application using Spring security.
+ * @author suprija
+ *
+ */
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
+    /**
+   	 * 
+   	 * @return BCryptPasswordEncoder
+   	 * 
+   	 * This method returns encoder object so that user password is not stored in plain text format 
+   	 */
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * 	To apply security filters for the end points.
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -36,6 +50,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll();
     }
 
+    /**
+     * This method is for user authentication purpose. AuthenticationManagerBuilder is built using userdetailsService and password encoder object
+     * 
+     * @param auth
+     * @throws Exception
+     * 
+     * 
+     */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());

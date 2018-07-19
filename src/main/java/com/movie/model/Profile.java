@@ -38,7 +38,16 @@ private String loc;
 @Column(name="lang")
 private String lang;
 
+@Column(name="theatre")
+private String theatre;
 
+	public String getTheatre() {
+	return theatre;
+}
+
+public void setTheatre(String theatre) {
+	this.theatre = theatre;
+}
 
 	public Long getId() {
 	return id;
@@ -58,7 +67,28 @@ public void setLang(String lang) {
 	@Column(name="tickets")
 	private Integer tickets;
 	
+	@Column(name="ticketclass")
+	private String ticketclass;
 	
+	public String getTicketclass() {
+		return ticketclass;
+	}
+
+	public void setTicketclass(String ticketclass) {
+		this.ticketclass = ticketclass;
+	}
+	
+	@Column(name="ticketsprice")
+	private Integer ticketsprice;
+
+	public Integer getTicketsprice() {
+		return ticketsprice;
+	}
+
+	public void setTicketsprice(Integer ticketsprice) {
+		this.ticketsprice = ticketsprice;
+	}
+
 	@Temporal(TemporalType.DATE)
 	@Column(name="dates")
     private Date dates;
@@ -104,15 +134,25 @@ public void setLang(String lang) {
 		this.dates = dates;
 	}
 
-	public Profile(String uname, String movie, String loc, String lang, Integer tickets, Date dates) {
+	public Profile(Long id, String uname, String movie, String loc, String lang, String theatre, Integer tickets,
+			String ticketclass, Integer ticketsprice, Date dates) {
 		super();
+		this.id = id;
 		this.uname = uname;
 		this.movie = movie;
 		this.loc = loc;
 		this.lang = lang;
+		this.theatre = theatre;
 		this.tickets = tickets;
+		this.ticketclass = ticketclass;
+		this.ticketsprice = ticketsprice;
 		this.dates = dates;
 	}
+
+	
+
+	
+	
 
 	
 	

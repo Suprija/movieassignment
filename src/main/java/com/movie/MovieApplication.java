@@ -9,7 +9,11 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-
+/**
+ * This class serves as the Main class for Movie application
+ * @author suprija
+ *
+ */
 @EnableJpaRepositories(basePackages = "com")
 @SpringBootApplication
 public class MovieApplication extends SpringBootServletInitializer {

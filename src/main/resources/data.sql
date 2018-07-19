@@ -22,6 +22,18 @@ VALUES
 INSERT INTO `info` (`id` ,`lang`,`loc`,`movie`,`theatre`,`tickets`)
 VALUES
 (8,'Hindi','Gachibowli','Dangal','Asian',3);
+INSERT INTO `info` (`id` ,`lang`,`loc`,`movie`,`theatre`,`tickets`)
+VALUES
+(9,'Hindi','HiTech City','Golmaal','Asian',3);
+INSERT INTO `info` (`id` ,`lang`,`loc`,`movie`,`theatre`,`tickets`)
+VALUES
+(10,'Hindi','HiTech City','Gold','INOX',5);
+INSERT INTO `info` (`id` ,`lang`,`loc`,`movie`,`theatre`,`tickets`)
+VALUES
+(11,'Telugu','HiTech City','Spyder','Asian',2);
+INSERT INTO `info` (`id` ,`lang`,`loc`,`movie`,`theatre`,`tickets`)
+VALUES
+(12,'Telugu','HiTech City','One','Forum',4);
 
 
 
