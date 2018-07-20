@@ -32,7 +32,7 @@
 			<input type="radio" name="movie" value=${list.movie} data=${list.tickets} onchange="checktickets()" id="movie" required><label style="font-size: 20px;">${list.movie} -- ${list.theatre} -- ${list.tickets}</label>
 			</td><%-- <td id="availabletickets"><label style="font-size: 20px;"> --${list.tickets}</label>
 			</td> --%></c:forEach></tr>
-			<tr><td></td><td id="housefull"></td></tr>
+			<tr><td></td><td id="housefull" style="color:red"></td></tr>
 			
 		<tr>
 		<td>Number of Tickets :</td>

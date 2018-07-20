@@ -1,6 +1,6 @@
 package com.movie.test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.testSecurityContext;
 import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
@@ -28,11 +28,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.movie.model.Info;
-import com.movie.model.Profile;
+import com.movie.model.Tickets;
 import com.movie.model.User;
 import com.movie.repository.InfoRepository;
 import com.movie.repository.ProfileRepository;
 import com.movie.service.UserService;
+import com.movie.web.UserController;
 
 
 
@@ -40,8 +41,6 @@ import com.movie.service.UserService;
 public class UserControllerTest extends AbstractControllerTest {
 	
     
-    @Autowired
-    private ProfileRepository profileRepository;
     
     @Autowired
     private UserService userService;
@@ -54,12 +53,18 @@ public class UserControllerTest extends AbstractControllerTest {
     private MockMvc mockMvc;
    @Autowired
   private Filter springSecurityFilterChain;
+   
+   @Autowired
+	private UserController uController;
+
+   
     @Before
     public void setUp() {
  mockMvc = MockMvcBuilders.webAppContextSetup(context)
               .addFilters(springSecurityFilterChain)
               .defaultRequest(get("/").with(testSecurityContext()))
               .build();
+ 
         }
     @Test
 	public void testRegistrationPageLoading() throws Exception 
@@ -148,19 +153,35 @@ public class UserControllerTest extends AbstractControllerTest {
 	  	 Assert.assertNotNull("failure- expected entitiy", list);
 	    }   
 
+      @Test
+      public void unauthorizedProfileAccess() throws Exception {
+          
+    	  mockMvc.perform(MockMvcRequestBuilders.get("/profile"))
+        .andExpect(unauthenticated());
+      }
       
       @Test
      @WithMockUser
       public void testProfile() throws Exception {
-      	List<Profile> profile1=profileRepository.getData("nouser");
 		  
-      	
-    	  mockMvc.perform(MockMvcRequestBuilders.get("/profile"))
+      	mockMvc.perform(MockMvcRequestBuilders.get("/profile"))
           .andExpect(status().isOk())
-         
           .andExpect(view().name("profile"));
     	  
-    	  assertTrue(profile1.isEmpty());
+      }
+      
+      
+      
+      @Test	
+      public void bookTicketTest()
+      {
+    	  
+      	Tickets t = new Tickets();
+      	t.setMovie("Lie");
+      	t.setTickets(3);
+      	t.setTicketclass(100);
+      	uController.getPrice(t);
+      	assertEquals(uController.price,300);
       }
       
 }

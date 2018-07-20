@@ -21,7 +21,7 @@ VALUES
 (7,'Hindi','Madhapur','Zero','IMAX',6);
 INSERT INTO `info` (`id` ,`lang`,`loc`,`movie`,`theatre`,`tickets`)
 VALUES
-(8,'Hindi','Gachibowli','Dangal','Asian',3);
+(8,'Hindi','Gachibowli','Dangal','Asian',0);
 INSERT INTO `info` (`id` ,`lang`,`loc`,`movie`,`theatre`,`tickets`)
 VALUES
 (9,'Hindi','HiTech City','Golmaal','Asian',3);

@@ -2,6 +2,7 @@ package com.movie.web;
 
 import com.movie.model.Info;
 import com.movie.model.Profile;
+import com.movie.model.Tickets;
 import com.movie.model.User;
 import com.movie.repository.InfoRepository;
 import com.movie.repository.ProfileRepository;
@@ -36,6 +37,7 @@ public class UserController {
 	public String loc;
 	public String lang;
 	public String dateb;
+	public int price;
 
 	
     @Autowired
@@ -182,14 +184,71 @@ public class UserController {
         return "profile";
     }
     
-   /**
+    
+    @RequestMapping(value = "/redirect", method = RequestMethod.GET)
+    public String redirect(@ModelAttribute("input") Tickets input,Principal p) {
+		 String uname=p.getName();
+		 String classticket = null;
+	        String theatre;
+	        String selmovie=input.movie;
+	        theatre=infoRepository.getTheatre(selmovie,loc,lang);
+	        int tick=infoRepository.getTickets(selmovie,loc);
+	        int newtick=tick-(input.tickets);
+	        int updatetick=infoRepository.updateTickets(selmovie,newtick);
+	        logger.info(""+updatetick);
+		 int pr=getPrice(input);
+		 if(input.ticketclass==80)
+	     	   classticket="Silver";
+	        else if(input.ticketclass==100)
+	     	   classticket="Gold";
+	        else if(input.ticketclass==150)
+	     	   classticket="Platinum";
+
+	        profileRepository.insertData(uname,loc,lang,selmovie,theatre,input.tickets,classticket,pr,dateb);
+    	return "redirect:/welcome"; 
+    }
+
+	 public int getPrice(Tickets input) {
+	        price=input.tickets*input.ticketclass;
+	        return price;
+	      }
+    
+    /*@RequestMapping(value = "/redirect", method = RequestMethod.GET)
+    public String redirect(@ModelAttribute("input") Tickets input,Principal p) {
+    	String uname=p.getName();
+        String classticket = null;
+        String theatre;
+        String selmovie=input.movie;
+        theatre=infoRepository.getTheatre(selmovie,loc,lang);
+        int tick=infoRepository.getTickets(selmovie,loc);
+        int newtick=tick-(input.tickets);
+        int updatetick=infoRepository.updateTickets(selmovie,newtick);
+        logger.info(""+updatetick);
+        int price=input.tickets*input.ticketclass;
+        if(input.ticketclass==80)
+     	   classticket="Silver";
+        else if(input.ticketclass==100)
+     	   classticket="Gold";
+        else if(input.ticketclass==150)
+     	   classticket="Platinum";
+
+        profileRepository.insertData(uname,loc,lang,selmovie,theatre,input.tickets,classticket,price,dateb);
+        
+    	//bookTicket(input,p);
+    	return "redirect:/welcome"; 
+    }*/
+    
+    //public void bookTicket(OrderDetails inp)
+
+    
+  /* *//**
     * To display welcome page after successful ticket booking
     * @param movie selected by the user
     * @param tickets selected by the user
     * @param ticketclass selected by the user
     * @param p It is the currently logged in user
     * @return welcome page for successful ticket booking
-    */
+    *//*
     @RequestMapping(value = "/redirect", method = RequestMethod.GET)
     public String redirect(@RequestParam(name="movie") String movie,@RequestParam("tickets") Integer tickets,@RequestParam("ticketclass") Integer ticketclass,Principal p) {
        String uname=p.getName();
@@ -200,7 +259,7 @@ public class UserController {
        int newtick=tick-(tickets);
        int updatetick=infoRepository.updateTickets(movie,newtick);
        logger.info(""+updatetick);
-       int price=tickets*ticketclass;
+       price=tickets*ticketclass;
        logger.info("Total Price: "+price);
        if(ticketclass==80)
     	   classticket="Silver";
@@ -212,5 +271,5 @@ public class UserController {
        profileRepository.insertData(uname,loc,lang,movie,theatre,tickets,classticket,price,dateb);
        
     	return "redirect:/welcome";
-    }
+   }*/
 }
