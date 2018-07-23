@@ -171,17 +171,17 @@ public class UserController {
      * @param p It is the currently logged in user
      * @return booking history of logged in user
      */
-    @RequestMapping(value = {"/profile"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/history"}, method = RequestMethod.GET)
     public String options(Model model,Principal p) {
     	
     	String uname=p.getName();
-    	logger.info("Entered profile page for user :"+uname);
+    	logger.info("Entered history page for user :"+uname);
 
-    	List<History> profile=historyRepository.getData(uname);
+    	List<History> history=historyRepository.getData(uname);
     	
-    	model.addAttribute("profile", profile);
+    	model.addAttribute("history", history);
 
-        return "profile";
+        return "history";
     }
     
     /**
@@ -210,7 +210,17 @@ public class UserController {
 	     	   classticket="Platinum";
 
 		 historyRepository.insertData(uname,loc,lang,selmovie,theatre,input.tickets,classticket,pr,dateb);
-    	return "redirect:/welcome"; 
+    	return "redirect:/thankyou"; 
+    }
+    
+    /**
+     * Thank you page after payment
+     * @return thankyou page
+     */
+    @RequestMapping(value = "/thankyou", method = RequestMethod.GET)
+    public String thankyou()
+    {
+    	return "thankyou";
     }
     
     /**

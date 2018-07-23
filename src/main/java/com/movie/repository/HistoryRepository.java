@@ -23,7 +23,7 @@ public interface HistoryRepository extends JpaRepository<History,Long> {
 	void insertData(String uname,String loc,String lang,String movie,String theatre, Integer tickets, String classticket,Integer price,String timeStamp);
 	
 	
-	@Query("select p from History p where p.uname=?1")
+	@Query("select h from History h where h.uname=?1")
 	List<History> getData(String uname);
 	
 	

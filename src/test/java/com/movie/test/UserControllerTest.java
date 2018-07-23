@@ -150,19 +150,19 @@ public class UserControllerTest extends AbstractControllerTest {
 	    }   
 
       @Test
-      public void unauthorizedProfileAccess() throws Exception {
+      public void unauthorizedHistoryAccess() throws Exception {
           
-    	  mockMvc.perform(MockMvcRequestBuilders.get("/profile"))
+    	  mockMvc.perform(MockMvcRequestBuilders.get("/history"))
         .andExpect(unauthenticated());
       }
       
       @Test
      @WithMockUser
-      public void testProfile() throws Exception {
+      public void testHistory() throws Exception {
 		  
-      	mockMvc.perform(MockMvcRequestBuilders.get("/profile"))
+      	mockMvc.perform(MockMvcRequestBuilders.get("/history"))
           .andExpect(status().isOk())
-          .andExpect(view().name("profile"));
+          .andExpect(view().name("history"));
     	  
       }
       

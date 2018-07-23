@@ -28,17 +28,17 @@
 	  <th>Date</th>
 	  
     </tr>
-<c:forEach var="profile" items="${profile}">
+<c:forEach var="history" items="${history}">
 
 <tr>
-      <td>${profile.movie}</td>
-      <td>${profile.loc}</td>
-      <td>${profile.theatre}</td>
-      <td>${profile.lang}</td>
-	  <td>${profile.tickets}</td>
-	  <td>${profile.ticketclass}</td>
-	  <td>${profile.ticketsprice}</td>
-	 <td>${profile.dates}</td>
+      <td>${history.movie}</td>
+      <td>${history.loc}</td>
+      <td>${history.theatre}</td>
+      <td>${history.lang}</td>
+	  <td>${history.tickets}</td>
+	  <td>${history.ticketclass}</td>
+	  <td>${history.ticketsprice}</td>
+	 <td>${history.dates}</td>
 	 
     </tr>
 
