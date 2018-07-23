@@ -188,7 +188,7 @@ public class UserController {
      * 
      * @param input is model attribute from choices.jsp page
      * @param p It is the currently logged in user
-     * @return thankyou page for successful ticket booking
+     * @return redirect to /thankyou for successful ticket booking
      */
     @RequestMapping(value = "/redirect", method = RequestMethod.GET)
     public String redirect(@ModelAttribute("input") Tickets input,Principal p) {
