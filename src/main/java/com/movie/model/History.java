@@ -12,8 +12,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "profile")
-public class Profile {
+@Table(name = "history")
+public class History {
     
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,7 +24,7 @@ public class Profile {
 	
 	
 	
-	public Profile() {
+	public History() {
 		super();
 	}
 
@@ -134,7 +134,7 @@ public void setLang(String lang) {
 		this.dates = dates;
 	}
 
-	public Profile(Long id, String uname, String movie, String loc, String lang, String theatre, Integer tickets,
+	public History(Long id, String uname, String movie, String loc, String lang, String theatre, Integer tickets,
 			String ticketclass, Integer ticketsprice, Date dates) {
 		super();
 		this.id = id;

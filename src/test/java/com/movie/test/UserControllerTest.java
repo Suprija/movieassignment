@@ -31,7 +31,6 @@ import com.movie.model.Info;
 import com.movie.model.Tickets;
 import com.movie.model.User;
 import com.movie.repository.InfoRepository;
-import com.movie.repository.ProfileRepository;
 import com.movie.service.UserService;
 import com.movie.web.UserController;
 
@@ -103,10 +102,7 @@ public class UserControllerTest extends AbstractControllerTest {
     	  user.setPassword("suprijarao");
     	  
     	  userService.save(user);
-    	  
-    	  
-    	  
-    	  mockMvc
+   mockMvc
       .perform(formLogin().user("suprijarao").password("suprijarao"))
       .andExpect(authenticated());
       

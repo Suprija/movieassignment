@@ -1,11 +1,11 @@
 package com.movie.web;
 
+import com.movie.model.History;
 import com.movie.model.Info;
-import com.movie.model.Profile;
 import com.movie.model.Tickets;
 import com.movie.model.User;
+import com.movie.repository.HistoryRepository;
 import com.movie.repository.InfoRepository;
-import com.movie.repository.ProfileRepository;
 import com.movie.service.SecurityService;
 import com.movie.service.UserService;
 
@@ -47,7 +47,7 @@ public class UserController {
     private InfoRepository infoRepository;
 
     @Autowired
-    private ProfileRepository profileRepository;
+    private HistoryRepository historyRepository;
 
 
     
@@ -177,14 +177,19 @@ public class UserController {
     	String uname=p.getName();
     	logger.info("Entered profile page for user :"+uname);
 
-    	List<Profile> profile=profileRepository.getData(uname);
+    	List<History> profile=historyRepository.getData(uname);
     	
     	model.addAttribute("profile", profile);
 
         return "profile";
     }
     
-    
+    /**
+     * 
+     * @param input is model attribute from choices.jsp page
+     * @param p It is the currently logged in user
+     * @return welcome page for successful ticket booking
+     */
     @RequestMapping(value = "/redirect", method = RequestMethod.GET)
     public String redirect(@ModelAttribute("input") Tickets input,Principal p) {
 		 String uname=p.getName();
@@ -204,72 +209,18 @@ public class UserController {
 	        else if(input.ticketclass==150)
 	     	   classticket="Platinum";
 
-	        profileRepository.insertData(uname,loc,lang,selmovie,theatre,input.tickets,classticket,pr,dateb);
+		 historyRepository.insertData(uname,loc,lang,selmovie,theatre,input.tickets,classticket,pr,dateb);
     	return "redirect:/welcome"; 
     }
-
+    
+    /**
+     * To calculate price of booked tickets
+     * @param input Tickets object
+     * @return tickets price
+     */
 	 public int getPrice(Tickets input) {
 	        price=input.tickets*input.ticketclass;
 	        return price;
 	      }
     
-    /*@RequestMapping(value = "/redirect", method = RequestMethod.GET)
-    public String redirect(@ModelAttribute("input") Tickets input,Principal p) {
-    	String uname=p.getName();
-        String classticket = null;
-        String theatre;
-        String selmovie=input.movie;
-        theatre=infoRepository.getTheatre(selmovie,loc,lang);
-        int tick=infoRepository.getTickets(selmovie,loc);
-        int newtick=tick-(input.tickets);
-        int updatetick=infoRepository.updateTickets(selmovie,newtick);
-        logger.info(""+updatetick);
-        int price=input.tickets*input.ticketclass;
-        if(input.ticketclass==80)
-     	   classticket="Silver";
-        else if(input.ticketclass==100)
-     	   classticket="Gold";
-        else if(input.ticketclass==150)
-     	   classticket="Platinum";
-
-        profileRepository.insertData(uname,loc,lang,selmovie,theatre,input.tickets,classticket,price,dateb);
-        
-    	//bookTicket(input,p);
-    	return "redirect:/welcome"; 
-    }*/
-    
-    //public void bookTicket(OrderDetails inp)
-
-    
-  /* *//**
-    * To display welcome page after successful ticket booking
-    * @param movie selected by the user
-    * @param tickets selected by the user
-    * @param ticketclass selected by the user
-    * @param p It is the currently logged in user
-    * @return welcome page for successful ticket booking
-    *//*
-    @RequestMapping(value = "/redirect", method = RequestMethod.GET)
-    public String redirect(@RequestParam(name="movie") String movie,@RequestParam("tickets") Integer tickets,@RequestParam("ticketclass") Integer ticketclass,Principal p) {
-       String uname=p.getName();
-       String classticket = null;
-       String theatre;
-       theatre=infoRepository.getTheatre(movie,loc,lang);
-       int tick=infoRepository.getTickets(movie,loc);
-       int newtick=tick-(tickets);
-       int updatetick=infoRepository.updateTickets(movie,newtick);
-       logger.info(""+updatetick);
-       price=tickets*ticketclass;
-       logger.info("Total Price: "+price);
-       if(ticketclass==80)
-    	   classticket="Silver";
-       else if(ticketclass==100)
-    	   classticket="Gold";
-       else if(ticketclass==150)
-    	   classticket="Platinum";
-
-       profileRepository.insertData(uname,loc,lang,movie,theatre,tickets,classticket,price,dateb);
-       
-    	return "redirect:/welcome";
-   }*/
 }

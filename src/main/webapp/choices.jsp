@@ -93,52 +93,11 @@ else
 {
 		document.getElementById("price").innerHTML="";
 }
-	/*if (document.getElementById('movie').checked) {
-		var rate = parseInt(document.getElementById('movie').getAttribute("data"));
-		//var rate = document.getElementById('first').value;
-		if(tickets.value>rate)
-		{
-			//alert("Wrong");
-			document.getElementById('une').innerHTML = "More not allowed";
-			one.value="";
-					document.getElementById("price").innerHTML="";
-			//one.focus();
-		}
-		else if(tickets.value<=rate)
-		{
-					document.getElementById('une').innerHTML = "";
-		var price=tickets.value * rate;
-		document.getElementById("price").innerHTML=""+price;
-		}
-}*/
-/*else if (document.getElementById('second').checked) {
-		var rate = parseInt(document.getElementById('second').getAttribute("data"));
-		//var rate = document.getElementById('second').value;
-		if(one.value>rate)
-		{
-			//alert("Wrong");
-			document.getElementById('une').innerHTML = "More not allowed";
-			one.value="";
-								document.getElementById("price").innerHTML="";
-			//one.focus();
-		}
-		else if(one.value<=rate)
-		{
-					document.getElementById('une').innerHTML = "";
-					var price=one.value * rate;
-					document.getElementById("price").innerHTML=""+price;
-		}
-}*/
-/*else 
-{
-	document.getElementById("price").innerHTML="";
-}*/
-	if (document.getElementById('silver').checked) {
+		if (document.getElementById('silver').checked) {
 var rate = parseInt(document.getElementById('silver').getAttribute("data"));
 		var price=tickets.value * rate;
 			
 		document.getElementById("price").innerHTML=""+price;
-//alert(""+price);
 			
 		}
 else if (document.getElementById('gold').checked) {
@@ -158,7 +117,7 @@ var rate = parseInt(document.getElementById('platinum').getAttribute("data"));
 else
 {
 		document.getElementById("price").innerHTML="";
-}//alert(""+tickets.value);
+}
 }
  
  
@@ -166,35 +125,6 @@ else
  
 			
 </script>			
-			
-			<!-- <script>
-			
-			function ticketCheck(){
-				var number=document.getElementById("tickets");
-				var movie=document.getElementById("movie");
-				if(number.value>movie.value)
-					{ 
-					alert("Selected tickets cannot be more than available!!");
-					//document.getElementById("price").innerHTML="Total Price :"+number.value +""+movie.value;
-					}
-				
-			}
-			 -->
-			 
-			
-			<!-- <script>
-			
-  function priceCalculate() {
-	 var classt=document.querySelector('input[name="ticketclass"]:checked');
-	 var number=document.getElementById("tickets");
-	 var price=classt.value * number.value;
-	 document.getElementById("price").innerHTML="Total Price :"+price;
-	//window.location = '/options.jsp';
-	   //document.getElementById('welcomeDiv').style.display = "block";
-}   
-</script> --> 
-			
-			
-	</form>		
+</form>		
 </body>
 </html>
