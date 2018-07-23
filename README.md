@@ -47,3 +47,5 @@ If your tomcat is configured to be on 8080, you can access the app using:
 
 Starting url:<br>
 	localhost:8080/Movie/registration
+
+Attached jenkins config.xml file
