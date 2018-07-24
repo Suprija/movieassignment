@@ -169,7 +169,7 @@ public class UserControllerTest extends AbstractControllerTest {
       
       
       @Test	
-      public void bookTicketTest()
+      public void getPriceTest()
       {
     	  
       	Tickets t = new Tickets();
